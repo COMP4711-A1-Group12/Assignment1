@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This is a "CMS" model for quotes, but with bogus hard-coded data,
+ * This is a "CMS" model for players, but with bogus hard-coded data,
  * so that we don't have to worry about any database setup.
  * This would be considered a "mock database" model.
  *
  * @author jim
  */
-class Quotes extends CI_Model {
+class Players extends CI_Model {
 
 	// The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 	var $data = array(
@@ -41,7 +41,7 @@ class Quotes extends CI_Model {
 		return null;
 	}
 
-	// retrieve all of the quotes
+	// retrieve all of the players
 	public function all()
 	{
 		return $this->data;
