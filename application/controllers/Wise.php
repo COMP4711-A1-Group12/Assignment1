@@ -9,7 +9,7 @@ class Wise extends Application
 
     function bingo()
     {
-	$record = $this->quotes->get(6);
+	$record = $this->players->get(6);
 	$this->data = array_merge($this->data, $record);
 	$this->data['pagebody'] = 'justone';
 

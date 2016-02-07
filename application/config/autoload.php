@@ -112,7 +112,7 @@ $autoload['language'] = array();
   |
  */
 
-$autoload['model'] = array('quotes');
+$autoload['model'] = array('players');
 
 
 /* End of file autoload.php */
