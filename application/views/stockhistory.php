@@ -1,8 +1,7 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div class="row">
+    <div class="span3"><img src="/data/{mug}" title="{who}"/></div>
+    <div class="span8 offset1">
+        <p class="lead">{what}</p><br/>
+        <p class="text-right">{who}</p>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 <div class="row" id="stocksPanel">
     {stockportfolios}
-    <h5>STOCKS</h5>
-    <div class="span4"><a href="{href}"><img src="/data/{mug}" title="{who}"/></a></div>
+    <div class="span4"><a href="{href}"><img src="/data/{mug}" title="{who}"/></a><br/><h5>Current value: ?</h5></div>
     {/stockportfolios}
 </div> 
 <br/><hr/><br/>
