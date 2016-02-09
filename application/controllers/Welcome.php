@@ -24,24 +24,39 @@ class Welcome extends Application {
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		// build the list of authors, to pass on to our view
 		$source = $this->players->all();
+                $source2 = $this->stocks->all();
+                
 		$portfolios = array();
+                $stockportfolios = array();
+                
 		foreach ($source as $record)
 		{
 			$portfolios[] = array('who' => $record['who'], 'mug' => $record['mug'], 'href' => $record['where']);
 		}
 		$this->data['portfolios'] = $portfolios;
+                
+                foreach ($source2 as $record2)
+		{
+			$stockportfolios[] = array('who' => $record2['who'], 'mug' => $record2['mug'], 'href' => $record2['where']);
+		}
+		$this->data['stockportfolios'] = $stockportfolios;
 
 		$this->render();
 	}
         
-        function shucks()
-	{
-            
-                $this->data['pagebody'] = 'portfolio';
-		$record = $this->players->get(2);
-		$this->data = array_merge($this->data, $record);
-		
-		$this->render();
+        function stock($id){
+            $record2 = $this->stocks->get($id);
+            $this->data = array_merge($this->data, $record2);
+            $this->data['pagebody'] = 'justone';
+
+            $this->render();
+        }
+        function player($id){
+            $record = $this->players->get($id);
+            $this->data = array_merge($this->data, $record);
+            $this->data['pagebody'] = 'justone';
+
+            $this->render();
         }
 
 }
