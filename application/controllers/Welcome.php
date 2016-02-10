@@ -45,16 +45,16 @@ class Welcome extends Application {
 	}
         
         function stock($id){
-            $record2 = $this->stocks->get($id);
+            $record2 = $this->stocks->data[$id-1];
             $this->data = array_merge($this->data, $record2);
-            $this->data['pagebody'] = 'justone';
+            $this->data['pagebody'] = 'stockhistory';
 
             $this->render();
         }
         function player($id){
-            $record = $this->players->get($id);
+            $record = $this->players->data[$id-1];
             $this->data = array_merge($this->data, $record);
-            $this->data['pagebody'] = 'justone';
+            $this->data['pagebody'] = 'portfolio';
 
             $this->render();
         }

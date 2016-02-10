@@ -23,7 +23,7 @@ class Application extends CI_Controller {
 	{
 		parent::__construct();
 		$this->data = array();
-		$this->data['title'] = 'Players CMS';	// our default title
+		$this->data['title'] = 'Stock Ticker';	// our default title
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
 	}
