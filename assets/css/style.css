@@ -1,6 +1,18 @@
 /* CSS definition file containing site stylesheet */
-body {}
-#content {width:100%; margin-left:5% auto;margin-right:5% auto;}
-#footer {font-size: small; font-style:italic;text-align:center;}
+body {background-image:url('../images/background.png');}
+#content {width:100%; margin:5% auto;}
+.navbar,#footer{border-radius:10px;margin:20px;}
+#footer {font-size: small; font-style:italic;text-align:center;background-color:#ffffff;}
 .row>div {margin-bottom:10px;}
-#stocksPanel,#playersPanel{border-style:solid;border-color:black;width:960px;padding:20px;}
+#stocksPanel,#playersPanel,.row{text-align: center;color:#ffffff;border-style:solid;border-color:#363636;border-width:thin;border-radius:10px;width:175px;padding:20px;background-color:#1f2e2e;}
+#stocksPanel{
+    float:right;
+}
+#playersPanel{
+    float:left;
+}
+.row{
+    width:100%;
+}
+#oneStock,#onePlayer{margin-top:5px;}
+hr#line{height:1px;}

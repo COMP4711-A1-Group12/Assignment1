@@ -1,11 +1,16 @@
-<div class="row" id="stocksPanel">
+<hr/>
+<div id="stocksPanel">
     {stockportfolios}
-    <div class="span4"><a href="{href}"><img src="/data/{mug}" title="{who}"/></a><br/><h5>Current value: ?</h5></div>
+    <hr id="line"/>
+    <a href="{href}"><img src="/data/{mug}" title="{who}" id="oneStock"/></a>
+    <br/><h5>Current value: ?</h5>
     {/stockportfolios}
 </div> 
-<br/><hr/><br/>
-<div class="row" id="playersPanel">
+
+<div id="playersPanel">
     {portfolios}
-    <div class="span4"><a href="{href}"><img src="/data/{mug}" title="{who}"/></a></div>
+    <hr id="line"/>
+    <a href="{href}"><img src="/assets/images/logo.png" title="{who}" id="onePlayer" align="left"/></a>
+    <p>Equity: <br/>Cash:</p><br/>
     {/portfolios}
 </div>
