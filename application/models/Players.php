@@ -26,38 +26,33 @@ class Players extends CI_Model {
 	);
 
 	// Constructor
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 	}
 
 	// retrieve a single quote
-	public function get($which)
-	{
+	public function get($which) {
 		// iterate over the data until we find the one we want
-		foreach ($this->data as $record){
-			if ($record['id'] == $which){
+		foreach ($this->data as $record) {
+			if ($record['id'] == $which) {
 				return $record;
-                        }
-                }
+            }
+        }
 		return null;
 	}
 
 	// retrieve all of the players
-	public function all()
-	{
+	public function all() {
 		return $this->data;
 	}
 
 	// retrieve the first quote
-	public function first()
-	{
+	public function first() {
 		return $this->data[0];
 	}
 
 	// retrieve the last quote
-	public function last()
-	{
+	public function last() {
 		$index = count($this->data) - 1;
 		return $this->data[$index];
 	}
