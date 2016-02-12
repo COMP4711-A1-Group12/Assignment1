@@ -12,52 +12,47 @@ class Players extends CI_Model {
 	// The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 	var $data = array(
 		array('id' => '1', 'who' => 'Bob Monkhouse', 'mug' => 'bob-monkhouse-150x150.jpg', 'where' => '/player/1',
-			'what' => 'When I die, I want to go peacefully like my grandfather did–in his sleep. Not yelling and screaming like the passengers in his car.'),
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 		array('id' => '2', 'who' => 'Elayne Boosler', 'mug' => 'elayne-boosler-150x150.jpg', 'where' => '/player/2',
-			'what' => 'I have six locks on my door all in a row. When I go out, I lock every other one. I figure no matter how long somebody stands there picking the locks, they are always locking three.'),
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 		array('id' => '3', 'who' => 'Mark Russell', 'mug' => 'mark-russell-150x150.jpg', 'where' => '/player/3',
-			'what' => 'The scientific theory I like best is that the rings of Saturn are composed entirely of lost airline luggage.'),
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 		array('id' => '4', 'who' => 'Anonymous', 'mug' => 'Anonymous-150x150.jpg', 'where' => '/player/4',
-			'what' => 'How do you get a sweet little 80-year-old lady to say the F word? Get another sweet little 80-year-old lady to yell “BINGO!”'),
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 		array('id' => '5', 'who' => 'Socrates', 'mug' => 'socrates-150x150.jpg', 'where' => '/player/5',
-			'what' => 'By all means, marry. If you get a good wife, you’ll become happy; if you get a bad one, you’ll become a philosopher.'),
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 		array('id' => '6', 'who' => 'Isaac Asimov', 'mug' => 'isaac-asimov-150x150.jpg', 'where' => '/player/6',
-			'what' => 'Those people who think they know everything are a great annoyance to those of us who do.')
+			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 	);
 
 	// Constructor
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 	}
 
 	// retrieve a single quote
-	public function get($which)
-	{
+	public function get($which) {
 		// iterate over the data until we find the one we want
-		foreach ($this->data as $record){
-			if ($record['id'] == $which){
+		foreach ($this->data as $record) {
+			if ($record['id'] == $which) {
 				return $record;
-                        }
-                }
+            }
+        }
 		return null;
 	}
 
 	// retrieve all of the players
-	public function all()
-	{
+	public function all() {
 		return $this->data;
 	}
 
 	// retrieve the first quote
-	public function first()
-	{
+	public function first() {
 		return $this->data[0];
 	}
 
 	// retrieve the last quote
-	public function last()
-	{
+	public function last() {
 		$index = count($this->data) - 1;
 		return $this->data[$index];
 	}
