@@ -19,8 +19,7 @@ class Application extends CI_Controller {
 	 * Establish view parameters & load common helpers
 	 */
 
-	function __construct()
-	{
+	function __construct() {
 		parent::__construct();
 		$this->data = array();
 		$this->data['title'] = 'Stock Ticker';	// our default title
@@ -31,8 +30,7 @@ class Application extends CI_Controller {
 	/**
 	 * Render this page
 	 */
-	function render()
-	{
+	function render() {
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
