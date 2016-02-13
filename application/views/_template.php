@@ -36,5 +36,10 @@ if (!defined('APPPATH'))
         </div>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
         <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $( ".nav" ).menu();
+            });
     </body>
 </html>
