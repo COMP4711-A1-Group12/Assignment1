@@ -11,7 +11,7 @@
     {portfolios}
     <hr id="line"/>
     <p>
-        <a href="{Player}"><p>{Player}</p></a>
+        <a href="player/{who}"><p>{who}</p></a>
     <p>Equity: <br/>Cash:</p><br/>
     {/portfolios}
 </div>

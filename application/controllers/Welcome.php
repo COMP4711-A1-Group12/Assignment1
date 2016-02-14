@@ -23,15 +23,21 @@ class Welcome extends Application {
 		// build the list of authors, to pass on to our view
 		$source = $this->players->all(); //ART I WAS EDITING HERE
                 $source2 = $this->stocks->all();
+                $source3 = $this->players->get_players();
+                foreach ($source3->result() as $record) {
+                    $portfolios[] = array('who' => $record->Player);
+                }
+                $this->data['portfolios'] = $portfolios;
+                
                 
 		$portfolios = array();
                 $stockportfolios = array();
-                
+                /*
 		foreach ($source as $record) {
 			$portfolios[] = array('who' => $record['who'], 'mug' => $record['mug'], 'href' => $record['where']);
 		}
 		$this->data['portfolios'] = $portfolios;
-                
+                */
                 foreach ($source2 as $record2) {
 			$stockportfolios[] = array('who' => $record2['who'], 'mug' => $record2['mug'], 'href' => $record2['where']);
 		}
@@ -69,10 +75,14 @@ class Welcome extends Application {
         }
 
         function player($id){
-                $record = $this->players->data[$id-1];
-                $this->data = array_merge($this->data, $record);
+                $q = $this->players->get_trans($id);
+                foreach($q->result() as $record) {
+                    $transactions[] = array('key' => $record->Code, 'otherkey' => $record->Column);
+                }
+                $this->data['portfolios'] = $transactions;
+                
                 $this->data['pagebody'] = 'portfolio';
-
+                $this->data['who'] = $id;
                 $this->render();
         }
 

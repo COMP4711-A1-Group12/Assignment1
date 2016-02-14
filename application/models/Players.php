@@ -24,7 +24,7 @@ class Players extends CI_Model {
 		array('id' => '6', 'who' => 'Isaac Asimov', 'mug' => 'isaac-asimov-150x150.jpg', 'where' => '/player/6',
 			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 	);
-
+        
 	// Constructor
 	public function __construct() {
 		parent::__construct();
@@ -34,28 +34,12 @@ class Players extends CI_Model {
                 $query = $this->db->query('select * from players');
                 return $query;
         }
-        
-	// retrieve a single quote
-	public function get($which) {
-		// iterate over the data until we find the one we want
-		foreach ($this->data as $record) {
-			if ($record['id'] == $which) {
-				return $record;
-            }
-        }
-		return null;
-	}
-        
-        public function get_stock_value($i)
-        {
-            $sum = 0;
-            $query = $this->db->query('SELECT value, quantity FROM holdings WHERE player = "' . $i . '"');
-            foreach($query->result() as $row) {
-                $sum += $row->value * $row->quantity;
-            }
-            return $sum;
-        }
 
+        public function get_trans($id) {
+                $q = $this->db->query('SELECT DateTime, Stock, Trans, Quantity FROM transactions where Player = "' . $id. '" ORDER BY DateTime DESC');
+                return $q;
+        }
+        
 	// retrieve all of the players
 	public function all() {
 		return $this->data;
