@@ -9,7 +9,7 @@
  */
 class Players extends CI_Model {
 
-	// The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
+        // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 	var $data = array(
 		array('id' => '1', 'who' => 'Bob Monkhouse', 'mug' => 'bob-monkhouse-150x150.jpg', 'where' => '/player/1',
 			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
@@ -24,23 +24,22 @@ class Players extends CI_Model {
 		array('id' => '6', 'who' => 'Isaac Asimov', 'mug' => 'isaac-asimov-150x150.jpg', 'where' => '/player/6',
 			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
 	);
-
+        
 	// Constructor
 	public function __construct() {
 		parent::__construct();
 	}
 
-	// retrieve a single quote
-	public function get($which) {
-		// iterate over the data until we find the one we want
-		foreach ($this->data as $record) {
-			if ($record['id'] == $which) {
-				return $record;
-            }
+        public function get_players() {
+                $query = $this->db->query('select * from players');
+                return $query;
         }
-		return null;
-	}
 
+        public function get_trans($id) {
+                $q = $this->db->query('SELECT DateTime, Stock, Trans, Quantity FROM transactions where Player = "' . $id. '" ORDER BY DateTime DESC');
+                return $q;
+        }
+        
 	// retrieve all of the players
 	public function all() {
 		return $this->data;
