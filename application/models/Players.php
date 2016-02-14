@@ -9,7 +9,7 @@
  */
 class Players extends CI_Model {
 
-	// The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
+        // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 	var $data = array(
 		array('id' => '1', 'who' => 'Bob Monkhouse', 'mug' => 'bob-monkhouse-150x150.jpg', 'where' => '/player/1',
 			'recent_trans' => 'recent transactions', 'current_holds' => 'current holdings'),
@@ -30,6 +30,11 @@ class Players extends CI_Model {
 		parent::__construct();
 	}
 
+        public function get_players() {
+                $query = $this->db->query('select * from players');
+                return $query;
+        }
+        
 	// retrieve a single quote
 	public function get($which) {
 		// iterate over the data until we find the one we want
@@ -40,6 +45,16 @@ class Players extends CI_Model {
         }
 		return null;
 	}
+        
+        public function get_stock_value($i)
+        {
+            $sum = 0;
+            $query = $this->db->query('SELECT value, quantity FROM holdings WHERE player = "' . $i . '"');
+            foreach($query->result() as $row) {
+                $sum += $row->value * $row->quantity;
+            }
+            return $sum;
+        }
 
 	// retrieve all of the players
 	public function all() {

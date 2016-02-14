@@ -11,8 +11,7 @@
     {portfolios}
     <hr id="line"/>
     <p>
-    <!-- <a href="{href}"><img src="/assets/images/logo.png" title="{who}" id="onePlayer" align="left"/></a> -->
-        <a href="{href}"><p>{who}</p></a>
+        <a href="{Player}"><p>{Player}</p></a>
     <p>Equity: <br/>Cash:</p><br/>
     {/portfolios}
 </div>
