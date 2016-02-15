@@ -18,18 +18,16 @@
     </head>
     <body>
         <ul class="nav">
-            {menudata}
-            <li>{type}
+            <li>Players
                 <ul>
-                    <li><a href="{link1}">{name1}</a></li>
-                    <li><a href="{link2}">{name2}</a></li>
-                    <li><a href="{link3}">{name3}</a></li>
-                    <li><a href="{link4}">{name4}</a></li>
-                    <li><a href="{link5}">{name5}</a></li>
-                    <li><a href="{link6}">{name6}</a></li>
+                    {drop-players}
                 </ul>
             </li>
-            {/menudata}
+            <li>Stocks
+                <ul>
+                    {drop-stocks}
+                </ul>
+            </li>
         </ul>
     </body>
 </html>

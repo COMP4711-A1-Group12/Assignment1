@@ -1,0 +1,1 @@
+<li><a href="/player/{Player}">{Player}</a></li>
