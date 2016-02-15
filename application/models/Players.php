@@ -32,7 +32,17 @@ class Players extends CI_Model {
 
         public function get_players() {
                 $query = $this->db->query('select * from players');
+     
                 return $query;
+        }
+        public function get_equity($id) {
+                $query = $this->db->query('select sum(quantity) from transactions where Player = "'
+                        .$id . '" and trans = "buy"');
+            
+                foreach($query->row() as $id){
+                    return $id;
+                }
+                return false;
         }
 
         public function get_trans($id) {

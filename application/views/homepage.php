@@ -12,6 +12,6 @@
     <hr id="line"/>
     <p>
         <a href="player/{who}"><p>{who}</p></a>
-    <p>Equity: <br/>Cash: {cash}</p><br/>
+    <p>Equity:{equity} <br/>Cash: {cash}</p><br/>
     {/portfolios}
 </div>

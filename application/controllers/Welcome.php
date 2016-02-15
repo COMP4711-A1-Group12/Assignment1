@@ -25,8 +25,10 @@ class Welcome extends Application {
                 $source2 = $this->stocks->all();
                 $source3 = $this->players->get_players();
                 $source4 = $this->stocks->get_stocks();
+                
                 foreach ($source3->result() as $record) {
-                    $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash);
+                    $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash,
+                        'equity' => ((string)$record->Cash + $this->players->get_equity($record->Player)));
                 }
                 $this->data['portfolios'] = $portfolios;
                 
