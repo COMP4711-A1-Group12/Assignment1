@@ -37,30 +37,10 @@ class Welcome extends Application {
                 
 		$this->render();
 	}
-        /*
-        function parse_players() {
-            
-                $result = '';
-                
-                $q = $this->players->get_players();
-                
-                foreach ($q->result() as $row) {
-                    $row->StockValue = $this->players->get_stock_value($row->Player);
-                    $row->Equity = $row->StockValue + $row->Cash;
-                    $result .= $this->parser->parse('homepage/player_row', (array) $row, true);
-                }
-                
-                $data['rows'] = $result;
-                
-                return $this->parser->parse('homepage/players_table', $data, true);
-           
-                
-        }
-        */
         
         function stock($id){
                 $this->data['stock-history'] = $this->stock_trade_activity($id);
-                $this->data['stock-moves'] = $this->pull_stock_moves($id);
+                $this->data['stock-moves'] = $this->some_stock_moves($id);
                 $this->data['pagebody'] = 'stockhistory/stockhistory';
                 $this->data['what'] = $id;
                 $this->render();
@@ -73,7 +53,7 @@ class Welcome extends Application {
                 $this->render();
         }
         
-        public function pull_stock_moves($id) {
+        public function some_stock_moves($id) {
                 $result = '';
                 $q = $this->stocks->get_a_stocks_moves($id);
                 foreach($q->result() as $row){
