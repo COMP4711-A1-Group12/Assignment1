@@ -23,10 +23,14 @@ class Welcome extends Application {
 		// build the list of authors, to pass on to our view
                 $source3 = $this->players->get_players();
                 $source4 = $this->stocks->get_stocks();
+
                 //put each player name on the homepage and in the dropmenu
                 $result = '';
+
                 foreach ($source3->result() as $record) {
-                    $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash);
+                    $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash,
+                        'equity' => ($record->Cash + $this->players->get_assets($record->Player))
+                        - $this->players->get_liabilities($record->Player));
                 }
                 $this->data['portfolios'] = $portfolios;
                 
