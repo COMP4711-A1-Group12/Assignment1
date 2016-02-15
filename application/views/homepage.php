@@ -1,13 +1,15 @@
 <hr/>
 <div id="stocksPanel">
+    <h3>STOCKS</h3>
     {stockportfolios}
     <hr id="line"/>
     <a href="stock/{what}"><p>{what}</p></a>
-    <br/><h5>Current value: {value}</h5>
+    <p>Current value: {value}</p>
     {/stockportfolios}
 </div> 
 
 <div id="playersPanel">
+    <h3>PLAYERS</h3>
     {portfolios}
     <hr id="line"/>
     <p>

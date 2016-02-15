@@ -40,7 +40,7 @@ class Players extends CI_Model {
      
                 return $query;
         }
-        public function get_equity($id) {
+        public function get_assets($id) {
                 $query = $this->db->query('select sum(quantity) from transactions where Player = "'
                         .$id . '" and trans = "buy"');
             
@@ -49,6 +49,15 @@ class Players extends CI_Model {
                 }
                 return false;
         }
+        public function get_liabilities($id) {
+                $query = $this->db->query('select sum(quantity) from transactions where Player = "'
+                        .$id . '" and trans = "sell"');
+            
+                foreach($query->row() as $id){
+                    return $id;
+                }
+                return false;
+        }        
 
         public function get_trans($id) {
                 $q = $this->db->query('SELECT DateTime, Stock, Trans, Quantity FROM transactions where Player = "' . $id. '" ORDER BY DateTime DESC');
