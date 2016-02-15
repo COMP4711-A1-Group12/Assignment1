@@ -6,7 +6,7 @@
  * Default application controller
  *
  * @author		JLP
- * @copyright           2010-2013, James L. Parry
+ * @copyright   2010-2013, James L. Parry
  * ------------------------------------------------------------------------
  */
 class Application extends CI_Controller {
@@ -35,8 +35,10 @@ class Application extends CI_Controller {
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		if (empty($this->session->userdata('username')))
 			$this->data['login'] = $this->parser->parse('login', $this->data, true);
-		else 
+		else {
+        	$this->data['username'] = $this->session->userdata('username');
 			$this->data['login'] = $this->parser->parse('logoff', $this->data, true);
+		}
 
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
