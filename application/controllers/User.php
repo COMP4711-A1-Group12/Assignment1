@@ -1,10 +1,9 @@
 <?php
 
 /**
- * Our homepage. Show a table of all the author pictures. Clicking on one should show their quote.
- * Our players model has been autoloaded, because we use it everywhere.
+ * Controller handling logging in/out and creating a session.
  * 
- * controllers/Welcome.php
+ * controllers/User.php
  *
  * ------------------------------------------------------------------------
  */
@@ -17,9 +16,9 @@ class User extends Application {
     function login() {
         $user = $this->input->post('username');
 
-        $newdata = array('username'  => $user);
+        $newdata = array('username' => $user);
         $this->session->set_userdata($newdata);
-
+        
         redirect($this->agent->referrer());
     }
 

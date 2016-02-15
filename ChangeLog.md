@@ -1,5 +1,9 @@
 Update this newest at the top
 
+February 14, 2016, 9:05pm dropdown menu fixed
+
+February 14, 2016, 8:30pm login display
+
 February 14, 2016, 6:11pm stock portfolios YAY
 
 February 14, 2016, 4:28pm player portfolios accessing database and displaying

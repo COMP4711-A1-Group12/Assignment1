@@ -30,6 +30,11 @@ class Players extends CI_Model {
 		parent::__construct();
 	}
 
+        public function player_names() {
+                $query = $this->db->query('SELECT Player FROM players');
+                return $query;
+        }
+        
         public function get_players() {
                 $query = $this->db->query('select * from players');
      
