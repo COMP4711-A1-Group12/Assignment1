@@ -1,4 +1,8 @@
 
 <form action="user/logoff" method="post">
-<button type='submit'>logoff</button>
+Welcome {username}
+<button type='submit'>logoff</button> 
 </form>
+<style type="text/css">
+form {float:right;}
+</style>
