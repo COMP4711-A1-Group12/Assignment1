@@ -21,23 +21,31 @@ class Welcome extends Application {
 	function index() {
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		// build the list of authors, to pass on to our view
-		$source = $this->players->all(); //ART I WAS EDITING HERE
-                $source2 = $this->stocks->all();
                 $source3 = $this->players->get_players();
                 $source4 = $this->stocks->get_stocks();
+                //put each player name on the homepage and in the dropmenu
+                $result = '';
                 foreach ($source3->result() as $record) {
                     $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash);
+                    $dropplayers[] = $record->Player;
                 }
                 $this->data['portfolios'] = $portfolios;
                 
+                var_dump($dropplayers);
+                $this->data['drop-players'] = $dropplayers;
+                
+                //put each stock name on the homepage and in the dropmenu
                 foreach ($source4->result() as $record) {
                     $stockportfolios[] = array('what' => $record->Code, 'value' => $record->Value);
+                    $dropstocks[] = $record->Code;
                 }
                 $this->data['stockportfolios'] = $stockportfolios;
+                $this->data['drop-stocks'] = $dropstocks;
                 
 		$this->render();
 	}
         
+        //stock page view data
         function stock($id){
                 $this->data['stock-history'] = $this->stock_trade_activity($id);
                 $this->data['stock-moves'] = $this->some_stock_moves($id);
@@ -45,7 +53,8 @@ class Welcome extends Application {
                 $this->data['what'] = $id;
                 $this->render();
         }
-
+        
+        //player page view data
         function player($id){
                 $this->data['player-activity'] = $this->player_trade_activity($id);
                 $this->data['pagebody'] = 'portfolio/portfolio';
@@ -79,7 +88,7 @@ class Welcome extends Application {
                 }
                 return $this->parser->parse('portfolio/trans-table' , array('rows' => $result), true);
         }
-        
+     
 }
 
 /* End of file Welcome.php */
