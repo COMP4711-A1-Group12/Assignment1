@@ -20,36 +20,42 @@ class Stocks extends CI_Model {
 	);
 
 	// Constructor
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 	}
 
-	// retrieve a single quote
-	public function get($which)
-	{
-		// iterate over the data until we find the one we want
-		foreach ($this->data as $record)
-			if ($record['id'] == $which)
-				return $record;
-		return null;
-	}
+	public function get_stocks() {
+                $query = $this->db->query('SELECT * FROM stocks');
+                return $query;
+        }
+
+        public function get_trans($id) {
+                $q = $this->db->query('SELECT DateTime, Stock, Trans, Quantity FROM transactions where Stock = "' . $id. '" ORDER BY DateTime DESC');
+                return $q;
+        }
+        
+        public function get_a_stocks_moves($id) {
+                $query = $this->db->query('SELECT * FROM movements where Code = "' . $id. '" ORDER BY Datetime DESC');
+                return $query;
+        }
+        
+        public function get_all_moves($id) {
+                $query = $this->db->query('SELECT * FROM movements ORDER BY Datetime DESC');
+                return $query;
+        }
 
 	// retrieve all of the stocks
-	public function all()
-	{
+	public function all() {
 		return $this->data;
 	}
 
 	// retrieve the first quote
-	public function first()
-	{
+	public function first() {
 		return $this->data[0];
 	}
 
 	// retrieve the last quote
-	public function last()
-	{
+	public function last() {
 		$index = count($this->data) - 1;
 		return $this->data[$index];
 	}

@@ -1,6 +1,8 @@
 Update this newest at the top
 
-Feb 14, 2016, 4:28pm player portfolios accessing database and displaying
+February 14, 2016, 6:11pm stock portfolios YAY
+
+February 14, 2016, 4:28pm player portfolios accessing database and displaying
 
 February 11, 2016, 8:26pm fixed db config
 
