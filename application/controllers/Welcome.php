@@ -32,12 +32,6 @@ class Welcome extends Application {
                 
 		$portfolios = array();
                 $stockportfolios = array();
-                /*
-		foreach ($source as $record) {
-			$portfolios[] = array('who' => $record['who'], 'mug' => $record['mug'], 'href' => $record['where']);
-		}
-		$this->data['portfolios'] = $portfolios;
-                */
                 foreach ($source2 as $record2) {
 			$stockportfolios[] = array('who' => $record2['who'], 'mug' => $record2['mug'], 'href' => $record2['where']);
 		}
@@ -75,17 +69,22 @@ class Welcome extends Application {
         }
 
         function player($id){
-                $q = $this->players->get_trans($id);
-                foreach($q->result() as $record) {
-                    $transactions[] = array('key' => $record->Code, 'otherkey' => $record->Column);
-                }
-                $this->data['portfolios'] = $transactions;
-                
-                $this->data['pagebody'] = 'portfolio';
+                $this->data['player-activity'] = $this->trade_activity($id);
+                $this->data['pagebody'] = 'portfolio/portfolio';
                 $this->data['who'] = $id;
                 $this->render();
         }
-
+        
+        public function trade_activity($id)
+        {
+                $result = '';
+                $q = $this->players->get_trans($id);
+                foreach($q->result() as $row){
+                    $result .= $this->parser->parse('portfolio/trans-row', (array) $row, true);
+                }
+                return $this->parser->parse('portfolio/trans-table' , array('rows' => $result), true);
+        }
+        
 }
 
 /* End of file Welcome.php */
