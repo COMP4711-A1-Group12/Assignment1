@@ -2,8 +2,8 @@
 <div id="stocksPanel">
     {stockportfolios}
     <hr id="line"/>
-    <a href="{href}"><img src="/data/{mug}" title="{who}" id="oneStock"/></a>
-    <br/><h5>Current value: ?</h5>
+    <a href="stock/{what}"><p>{what}</p></a>
+    <br/><h5>Current value: {value}</h5>
     {/stockportfolios}
 </div> 
 
@@ -12,6 +12,6 @@
     <hr id="line"/>
     <p>
         <a href="player/{who}"><p>{who}</p></a>
-    <p>Equity: <br/>Cash:</p><br/>
+    <p>Equity: <br/>Cash: {cash}</p><br/>
     {/portfolios}
 </div>

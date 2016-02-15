@@ -53,6 +53,6 @@ $route['dunno'] = function() {
 //$route['lock/(:any)/(:any)'] = 'welcome/shucks';
 //$route['show/(:num)'] = 'first/gimme/$1';
 $route['player/(:any)'] = 'welcome/player/$1';
-$route['stock/(:num)'] = 'welcome/stock/$1';
+$route['stock/(:any)'] = 'welcome/stock/$1';
  /* End of file routes.php */
 /* Location: ./application/config/routes.php */

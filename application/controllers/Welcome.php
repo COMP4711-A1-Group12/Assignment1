@@ -24,19 +24,17 @@ class Welcome extends Application {
 		$source = $this->players->all(); //ART I WAS EDITING HERE
                 $source2 = $this->stocks->all();
                 $source3 = $this->players->get_players();
+                $source4 = $this->stocks->get_stocks();
                 foreach ($source3->result() as $record) {
-                    $portfolios[] = array('who' => $record->Player);
+                    $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash);
                 }
                 $this->data['portfolios'] = $portfolios;
                 
+                foreach ($source4->result() as $record) {
+                    $stockportfolios[] = array('what' => $record->Code, 'value' => $record->Value);
+                }
+                $this->data['stockportfolios'] = $stockportfolios;
                 
-		$portfolios = array();
-                $stockportfolios = array();
-                foreach ($source2 as $record2) {
-			$stockportfolios[] = array('who' => $record2['who'], 'mug' => $record2['mug'], 'href' => $record2['where']);
-		}
-		$this->data['stockportfolios'] = $stockportfolios;
-
 		$this->render();
 	}
         /*
@@ -61,22 +59,39 @@ class Welcome extends Application {
         */
         
         function stock($id){
-                $record2 = $this->stocks->data[$id-1];
-                $this->data = array_merge($this->data, $record2);
-                $this->data['pagebody'] = 'stockhistory';
-
+                $this->data['stock-history'] = $this->stock_trade_activity($id);
+                $this->data['stock-moves'] = $this->pull_stock_moves($id);
+                $this->data['pagebody'] = 'stockhistory/stockhistory';
+                $this->data['what'] = $id;
                 $this->render();
         }
 
         function player($id){
-                $this->data['player-activity'] = $this->trade_activity($id);
+                $this->data['player-activity'] = $this->player_trade_activity($id);
                 $this->data['pagebody'] = 'portfolio/portfolio';
                 $this->data['who'] = $id;
                 $this->render();
         }
         
-        public function trade_activity($id)
-        {
+        public function pull_stock_moves($id) {
+                $result = '';
+                $q = $this->stocks->get_a_stocks_moves($id);
+                foreach($q->result() as $row){
+                    $result .= $this->parser->parse('stockhistory/moves-row', (array) $row, true);
+                }
+                return $this->parser->parse('stockhistory/moves-table' , array('rows' => $result), true);
+        }
+        
+        public function stock_trade_activity($id) {
+                $result = '';
+                $q = $this->stocks->get_trans($id);
+                foreach($q->result() as $row){
+                    $result .= $this->parser->parse('stockhistory/trans-row', (array) $row, true);
+                }
+                return $this->parser->parse('stockhistory/trans-table' , array('rows' => $result), true);
+        }
+        
+        public function player_trade_activity($id) {
                 $result = '';
                 $q = $this->players->get_trans($id);
                 foreach($q->result() as $row){
