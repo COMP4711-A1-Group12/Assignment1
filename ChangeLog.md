@@ -1,4 +1,6 @@
-Update this newest at the top
+Update this newest at the 
+
+February 14, 2016, 10:14pm equity calculation
 
 February 14, 2016, 9:05pm dropdown menu fixed
 
