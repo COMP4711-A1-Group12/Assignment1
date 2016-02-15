@@ -25,13 +25,14 @@ class Application extends CI_Controller {
 		$this->data['title'] = 'Stock Ticker';	// our default title
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
+                $this->data['stocks-drop'] = $this->dropdown_stocks();
+                $this->data['players-drop'] = $this->dropdown_players();
 	}
 
 	/**
 	 * Render this page
 	 */
 	function render() {
-		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		if (empty($this->session->userdata('username')))
 			$this->data['login'] = $this->parser->parse('login', $this->data, true);
@@ -43,6 +44,25 @@ class Application extends CI_Controller {
 		$this->parser->parse('_template', $this->data);
 	}
 
+        public function dropdown_stocks() {
+                $result = '';
+                $q = $this->stocks->stock_names();
+                foreach($q->result() as $row) {
+                    $result .= $this->parser->parse('stock_dropdown', (array) $row, true);
+                }
+                $data['options'] = $result;
+                return $this->parser->parse('the_dropdown', $data);
+        }
+        
+        public function dropdown_players() {
+                $result = '';
+                $q = $this->players->player_names();
+                foreach($q->result() as $row) {
+                    $result .= $this->parser->parse('player_dropdown', (array) $row, true);
+                }
+                $data['options'] = $result;
+                return $this->parser->parse('the_dropdown', $data);
+        }
 }
 
 /* End of file MY_Controller.php */

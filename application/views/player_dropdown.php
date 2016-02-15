@@ -1,1 +1,1 @@
-<li><a href="/portfolio/{Player}">{Player}</a></li>
+<li><a href="/player/{Player}">{Player}</a></li>

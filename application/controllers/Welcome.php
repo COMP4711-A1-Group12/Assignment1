@@ -27,20 +27,14 @@ class Welcome extends Application {
                 $result = '';
                 foreach ($source3->result() as $record) {
                     $portfolios[] = array('who' => $record->Player, 'cash' => $record->Cash);
-                    $dropplayers[] = $record->Player;
                 }
                 $this->data['portfolios'] = $portfolios;
-                
-                var_dump($dropplayers);
-                $this->data['drop-players'] = $dropplayers;
                 
                 //put each stock name on the homepage and in the dropmenu
                 foreach ($source4->result() as $record) {
                     $stockportfolios[] = array('what' => $record->Code, 'value' => $record->Value);
-                    $dropstocks[] = $record->Code;
                 }
                 $this->data['stockportfolios'] = $stockportfolios;
-                $this->data['drop-stocks'] = $dropstocks;
                 
 		$this->render();
 	}

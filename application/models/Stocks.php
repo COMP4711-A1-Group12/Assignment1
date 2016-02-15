@@ -24,6 +24,11 @@ class Stocks extends CI_Model {
 		parent::__construct();
 	}
 
+        public function stock_names() {
+                $query = $this->db->query('SELECT Code FROM stocks');
+                return $query;
+        }
+        
 	public function get_stocks() {
                 $query = $this->db->query('SELECT * FROM stocks');
                 return $query;

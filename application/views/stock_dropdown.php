@@ -1,1 +1,1 @@
-<li><a href="/stockhistory/{Code}">{Stock}</a></li>
+<li><a href="/stock/{Code}">{Code}</a></li>
