@@ -1,5 +1,7 @@
 Update this newest at the top
 
+Feb 14, 2016, 4:28pm player portfolios accessing database and displaying
+
 February 11, 2016, 8:26pm fixed db config
 
 February 10, 2016, 12:08pm updated homepage layout and links
