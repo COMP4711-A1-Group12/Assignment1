@@ -1,1 +1,2 @@
+{player-holdings}
 {player-activity}
