@@ -5,10 +5,10 @@ Assignment
 Team members:
 Grayden Hormes
 Cameron Bethel
-Luda shu
+Luda Shu
 
 Convention:
 K&R Indentation style
 
-Assingment 1
+Assignment 1
 create this game http://stocktickerclassic.com/

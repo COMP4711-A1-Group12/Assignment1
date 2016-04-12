@@ -46,13 +46,13 @@
 */
 
 $active_group = 'default';
-$active_record = TRUE;
+$query_builder = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'somedb';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['database'] = 'comp4711';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;

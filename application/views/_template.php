@@ -24,7 +24,20 @@ if (!defined('APPPATH'))
             <div class="navbar">
                 <div class="navbar-inner">
                     <a class="brand" href="/"><img src="/assets/images/logo.png"/></a>
-                    {menubar} </div>
+                    
+                    <ul class="nav">
+                        <li> Players<b class="caret"></b>
+                            {players-drop}
+                        </li>
+                        <li> Stocks  
+                            {stocks-drop}
+                        </li>
+                    </ul>
+                    <ul>
+                        {login}
+                    </ul>
+                    
+                 </div>
             </div>           
             <div id="content">
                 <h1>{title}</h1>
@@ -36,5 +49,11 @@ if (!defined('APPPATH'))
         </div>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
         <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $( ".nav" ).menu();
+            });
+        </script>
     </body>
 </html>

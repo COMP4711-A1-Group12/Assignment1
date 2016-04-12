@@ -1,0 +1,2 @@
+{stock-moves}
+{stock-history}
