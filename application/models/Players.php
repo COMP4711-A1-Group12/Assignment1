@@ -64,11 +64,6 @@ class Players extends CI_Model {
                 return $q;
         }
         
-        public function get_holds($id) {
-                $q = $this->db->query('SELECT Stock, Quantity, Value FROM holdings where Player = "' . $id. '" ORDER BY Stock DESC');
-                return $q;
-        }
-        
 	// retrieve all of the players
 	public function all() {
 		return $this->data;
