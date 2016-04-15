@@ -12,31 +12,27 @@ class Register extends Application {
     }
     function index(){
         $this->data['pagebody'] = 'registration';
+        $this->load->helper('form');
         $this->render();
     }
-    function connect(){
-        $mysql_hostname = "localhost";
-        $mysql_user = "root";
-        $mysql_password = "";
-        $mysql_database = "comp4711";
-        $prefix = "";
-        $bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
-        mysql_select_db($mysql_database, $bd) or die("Could not select database");
+    function insert(){
+        
+        $form_data = $this->input->post();
+        $first = $this->input->post("fname");
+        $last = $this->input->post("lname");       
+        $user = $this->input->post("username");
+        $pass = $this->input->post("password");
+        $pic = $this->input->post("picture");
+        
+        $data = array(
+           'fname' => $first,
+           'lname' => $last ,
+           'username' => $user,
+           'password' => $pass,
+           'picture' => $pic
+        );
 
-        session_start();
-//        include('connection.php');
-        $fname=$_POST['fname'];
-        $lname=$_POST['lname'];
-        $mname=$_POST['mname'];
-        $address=$_POST['address'];
-        $contact=$_POST['contact'];
-        $pic=$_POST['pic'];
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-        mysql_query("INSERT INTO member(fname, lname, gender, address, contact, picture, username, password)"
-                . "VALUES('$fname', '$lname', '$mname', '$address', '$contact', '$pic', '$username', '$password')");
-        header("location: registration.php?remarks=success");
-        mysql_close($con);
+        $this->db->insert('member', $data); 
+        echo 'success';
     }
-
 }
