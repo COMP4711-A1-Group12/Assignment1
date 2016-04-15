@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
  
 class gamePlay extends MY_Controller {
 
@@ -13,15 +12,15 @@ class gamePlay extends MY_Controller {
         parent::__construct();   
     }
     function index(){
-        $this->load->model('GameState');
-        $status = $this->GameState->gameStatus();
-        $this->load->view('game');
-        if((string)$status->desc != "closed"){    
-//            
-//            $this->data['status'] = ;
-        }
-        $this->data['status'] = "the game is closed";
-        $this->render();
+//restricted to current logged in only (only in navbar when logged in)
+//show portfolio (cash , equity, current market status)
+//choose a stock and quantity
+//buy or sell actions
+        
+      
+    }
+    function choose($stock,$quantity){
+        
     }
     function sell(){
         
@@ -31,11 +30,6 @@ class gamePlay extends MY_Controller {
         
     }
 }
-
-//restricted to current logged in only (only in navbar when logged in)
-//show portfolio (cash , equity, current market status)
-//choose a stock and quantity
-//buy or sell actions
 
 /*
  * SELL STOCK - POST request to bsx/sell with fields:

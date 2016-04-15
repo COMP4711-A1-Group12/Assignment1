@@ -27,6 +27,7 @@ class Application extends CI_Controller {
 		$this->data['pageTitle'] = 'welcome';   // our default page
                 $this->data['stocks-drop'] = $this->dropdown_stocks();
                 $this->data['players-drop'] = $this->dropdown_players();
+                $this->data['Registration'] = $this->data['pagebody'] = 'Registration';
 	}
 
 	/**
@@ -64,6 +65,9 @@ class Application extends CI_Controller {
                 }
                 $data['options'] = $result;
                 return $this->parser->parse('the_dropdown', $data);
+        }
+        public function register(){
+            $this->data['pagebody'] = 'Registration';
         }
 }
 

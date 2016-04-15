@@ -28,6 +28,7 @@
                     {drop-stocks}
                 </ul>
             </li>
-        </ul>
+            <li>{registration}</li>
+        </ul>     
     </body>
 </html>
