@@ -54,6 +54,7 @@ class Welcome extends Application {
         
         //player page view data
         function player($id){
+                $this->data['player-holdings'] = $this->player_holdings($id);
                 $this->data['player-activity'] = $this->player_trade_activity($id);
                 $this->data['pagebody'] = 'portfolio/portfolio';
                 $this->data['who'] = $id;
@@ -87,6 +88,14 @@ class Welcome extends Application {
                 return $this->parser->parse('portfolio/trans-table' , array('rows' => $result), true);
         }
      
+        public function player_holdings($id) {
+                $result = '';
+                $q = $this->players->get_holds($id);
+                foreach($q->result() as $row){
+                    $result .= $this->parser->parse('portfolio/holds-row', (array) $row, true);
+                }
+                return $this->parser->parse('portfolio/holds-table' , array('rows' => $result), true);
+        }
 }
 
 /* End of file Welcome.php */
