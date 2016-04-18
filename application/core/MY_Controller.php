@@ -28,6 +28,7 @@ class Application extends CI_Controller {
                 $this->data['stocks-drop'] = $this->dropdown_stocks();
                 $this->data['players-drop'] = $this->dropdown_players();
                 $this->data['menu-options'] = $this->makemenu();
+                $this->data['Registration'] = $this->data['pagebody'] = 'Registration';
 	}
 
 	/**
@@ -96,6 +97,9 @@ class Application extends CI_Controller {
             }
         }
        }
+        public function register(){
+            $this->data['pagebody'] = 'Registration';
+        }
 }
 
 /* End of file MY_Controller.php */

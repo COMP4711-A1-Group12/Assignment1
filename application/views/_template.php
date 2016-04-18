@@ -38,6 +38,7 @@ if (!defined('APPPATH'))
                         <li><a href="{link}">{name}</a></li>
                         {/menu-options}
                     </ul>
+                    <ul> <a href="register"><p>{Registration}</p></a></ul>
                     <ul>
                         {login}
                     </ul>

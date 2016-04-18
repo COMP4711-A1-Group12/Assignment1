@@ -40,7 +40,6 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-//$route['sleep'] = 'first/zzz';
 $route['dunno'] = function() {
     $source = './data/baboon.jpg'; // an image you provide
     // set the mime type for that image
@@ -49,11 +48,10 @@ $route['dunno'] = function() {
     readfile($source); // dish it
     die(); // and we don't have to go any further
 };
-//$route['([a-zA-Z]{4,4})/bingo'] = 'bingo';
-//$route['lock/(:any)/(:any)'] = 'welcome/shucks';
-//$route['show/(:num)'] = 'first/gimme/$1';
+
 $route['player/(:any)'] = 'welcome/player/$1';
 $route['stock/(:any)'] = 'welcome/stock/$1';
 $route['admin'] = 'welcome/admin';
+$route['reg'] = 'register/index';
  /* End of file routes.php */
 /* Location: ./application/config/routes.php */

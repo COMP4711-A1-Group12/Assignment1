@@ -1,14 +1,31 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//new player signup, using a unique userid
-
-
-//player: any password and avatar
-
-//admin: set password 
+<form name="reg" action="register/insert" method="post">
+<table width="274" border="0" align="center" cellpadding="2" cellspacing="0">
+  <tr>
+    
+  </tr>
+  <tr>
+    <td width="95"><div align="right">First Name:</div></td>
+    <td width="171"><input type="text" name="fname" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Last Name:</div></td>
+    <td><input type="text" name="lname" /></td>
+  </tr>
+  <tr>
+    <td><div align="right">Picture:</div></td>
+    <td><input type="text" name="picture" /></td>
+  </tr>
+ <tr>
+    <td><div align="right">Username:</div></td>
+    <td><input type="text" name="username" /></td>
+  </tr>
+ <tr>
+    <td><div align="right">Password:</div></td>
+    <td><input type="text" name="password" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input name="submit" type="submit" value="Submit" /></td>
+  </tr>
+</table>
+</form>

@@ -15,6 +15,7 @@ class GameState extends CI_Model {
     function gameStatus(){
         $homepage = file_get_contents('http://bsx.jlparry.com/status');
         $xml = simplexml_load_string($homepage);
+        print_r($xml);
         return $xml;
     }
     
