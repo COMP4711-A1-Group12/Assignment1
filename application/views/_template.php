@@ -33,6 +33,11 @@ if (!defined('APPPATH'))
                             {stocks-drop}
                         </li>
                     </ul>
+                    <ul style="list-style-type:none">
+                        {menu-options}
+                        <li><a href="{link}">{name}</a></li>
+                        {/menu-options}
+                    </ul>
                     <ul> <a href="register"><p>{Registration}</p></a></ul>
                     <ul>
                         {login}

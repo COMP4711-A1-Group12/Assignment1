@@ -27,6 +27,7 @@ class Application extends CI_Controller {
 		$this->data['pageTitle'] = 'welcome';   // our default page
                 $this->data['stocks-drop'] = $this->dropdown_stocks();
                 $this->data['players-drop'] = $this->dropdown_players();
+                $this->data['menu-options'] = $this->makemenu();
                 $this->data['Registration'] = $this->data['pagebody'] = 'Registration';
 	}
 
@@ -45,6 +46,19 @@ class Application extends CI_Controller {
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
 		$this->parser->parse('_template', $this->data);
+	}
+        
+        function makemenu()
+	{
+            $choices = array();
+            $userRole = $this->session->userdata('userRole');
+            if(strcmp($userRole, "admin") == 0){
+                $choices[] = array('name' => "admin", 'link' => '/admin');
+                $choices[] = array('name' => "Logout", 'link' => '/auth/logout');
+            }else {
+                $choices[] = array('name' => "Login", 'link' => '/auth');
+            }
+            return $choices;
 	}
 
         public function dropdown_stocks() {
@@ -66,6 +80,23 @@ class Application extends CI_Controller {
                 $data['options'] = $result;
                 return $this->parser->parse('the_dropdown', $data);
         }
+
+        function restrict($roleNeeded = null) {
+            $userRole =
+            $this->session->userdata('userRole');
+            if ($roleNeeded != null) {
+                if (is_array($roleNeeded)) {
+                if (!in_array($userRole, $roleNeeded))
+                {
+                   redirect("/");
+                   return;
+                }
+            } else if ($userRole != $roleNeeded) {
+                redirect("/");
+                return;
+            }
+        }
+       }
         public function register(){
             $this->data['pagebody'] = 'Registration';
         }

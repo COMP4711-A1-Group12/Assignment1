@@ -43,6 +43,11 @@ class Welcome extends Application {
 		$this->render();
 	}
         
+        function admin(){
+                $this->data['pagebody'] = 'agentManagement';
+                $this->render();
+        }
+        
         //stock page view data
         function stock($id){
                 $this->data['stock-history'] = $this->stock_trade_activity($id);
