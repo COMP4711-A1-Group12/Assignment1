@@ -54,5 +54,6 @@ $route['dunno'] = function() {
 //$route['show/(:num)'] = 'first/gimme/$1';
 $route['player/(:any)'] = 'welcome/player/$1';
 $route['stock/(:any)'] = 'welcome/stock/$1';
+$route['admin'] = 'welcome/admin';
  /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -15,8 +15,9 @@ class User extends Application {
 
     function login() {
         $user = $this->input->post('username');
-
-        $newdata = array('username' => $user);
+        $pass = $this->input->post('password');
+        
+        $newdata = array('username' => $user, 'password' => $pass);
         $this->session->set_userdata($newdata);
         
         redirect($this->agent->referrer());
